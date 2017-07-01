@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="TestAnimations.HoverControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestAnimations"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Storyboard x:Key="FadeIn">
+            <DoubleAnimation Duration="0:0:0.2" To=".2" Storyboard.TargetName="dropShadowEffect" Storyboard.TargetProperty="Opacity"/>
+
+            <DoubleAnimation Duration="0:0:0.2" To="5" Storyboard.TargetName="dropShadowEffect" Storyboard.TargetProperty="ShadowDepth"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.025" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.025" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleY"/>
+            <ColorAnimation Duration="0:0:0.2" To="#003399" Storyboard.TargetName="recFillBrush" Storyboard.TargetProperty="Color" />
+        </Storyboard>
+
+        <Storyboard x:Key="FadeOut">
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="dropShadowEffect" Storyboard.TargetProperty="Opacity"/>
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="borderThickness" Storyboard.TargetProperty="Width"/>
+
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="dropShadowEffect" Storyboard.TargetProperty="ShadowDepth"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleY"/>
+            <ColorAnimation Duration="0:0:0.2" To="#000" Storyboard.TargetName="recFillBrush" Storyboard.TargetProperty="Color" />
+        </Storyboard>
+        <Storyboard x:Key="MouseDown">
+            <!-- already have a 1px border -->
+            <DoubleAnimation Duration="0:0:0.2" To="4" Storyboard.TargetName="borderThickness" Storyboard.TargetProperty="Width"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.05" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.05" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleY"/>
+            <ColorAnimation Duration="0:0:0.2" To="#0078D7" Storyboard.TargetName="recFillBrush" Storyboard.TargetProperty="Color" />
+
+        </Storyboard>
+        <Storyboard x:Key="MouseUp">
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="borderThickness" Storyboard.TargetProperty="Width"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.025" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleX"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1.025" Storyboard.TargetName="scaleTransformEffect" Storyboard.TargetProperty="ScaleY"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid Width="100" Height="100" RenderTransformOrigin="0.5,0.5" >
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="1" ScaleY="1" x:Name="scaleTransformEffect"/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Rectangle StrokeThickness="0" Fill="{Binding Background, ElementName=border}" Margin="1">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="0" Opacity="0" x:Name="dropShadowEffect" />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Border x:Name="border" Background="White" BorderThickness="1" >
+            <Border.BorderBrush>
+                <SolidColorBrush x:Name="recFillBrush" Color="Black" />
+            </Border.BorderBrush>
+            
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Control.MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.GotFocus">
+                    <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource FadeOut}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.LostFocus">
+                    <BeginStoryboard Storyboard="{StaticResource FadeOut}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.MouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource MouseUp}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.MouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource MouseDown}"/>
+                </EventTrigger>
+            </Border.Triggers>
+
+            <Grid>
+                <Rectangle HorizontalAlignment="Left" Width="0" Fill="{Binding BorderBrush, ElementName=border}" x:Name="borderThickness" Margin="-1,-1,0,-1" />
+                <Grid Margin="5, 0, 0, 0">
+                    <TextBlock>I'm Text!</TextBlock>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

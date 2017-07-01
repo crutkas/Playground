@@ -1,0 +1,45 @@
+﻿<Window x:Class="TestAnimations.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestAnimations"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600"
+        SnapsToDevicePixels="True">
+    
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock>Proof of concept</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <local:HardcodedControl />
+                
+                <local:HoverControl Margin="5" />
+                <local:HoverControl Margin="5" />
+                <local:HoverControl Margin="5" />
+            </StackPanel>
+
+            <TextBlock>Select 1 [radiobutton] (not functional)</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <local:HoverControl Margin="5" />
+                <local:HoverControl Margin="5" />
+
+                <local:HardcodedControl />
+
+                <local:HoverControl Margin="5" />
+            </StackPanel>
+
+            
+            <TextBlock>Select Multiple [checkbox] (not functional)</TextBlock>
+            <StackPanel Orientation="Horizontal" >
+                <local:HoverControl Margin="5" />
+                <local:HardcodedControl />
+                
+                <local:HoverControl Margin="5" />
+                <local:HardcodedControl />
+
+                <local:HoverControl Margin="5" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
