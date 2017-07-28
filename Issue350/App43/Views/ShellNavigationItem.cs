@@ -1,3 +1,4 @@
+using App43.Services;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -96,7 +97,7 @@ namespace App43.Views
             Label = name;
             PageType = pageType;
 
-            Services.ThemeSelectorService.OnThemeChanged += (s, e) => 
+            ThemeSelectorService2.OnThemeChanged += (s, e) => 
             {
                 if (!IsSelected)
                     SelectedForeground = GetStandardTextColorBrush();
@@ -105,7 +106,7 @@ namespace App43.Views
         
         private SolidColorBrush GetStandardTextColorBrush()
         {
-            return Services.ThemeSelectorService.GetSystemControlForegroundForTheme();
+            return ThemeSelectorService2.GetSystemControlForegroundForTheme();
         }
 
         public static ShellNavigationItem FromType<T>(string name, Symbol symbol) where T : Page

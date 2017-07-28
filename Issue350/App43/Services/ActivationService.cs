@@ -78,13 +78,13 @@ namespace App43.Services
 
         private async Task InitializeAsync()
         {
-            await ThemeSelectorService.InitializeAsync();
+            await ThemeSelectorService2.InitializeAsync();
             await Task.CompletedTask;
         }
 
         private async Task StartupAsync()
         {
-            Services.ThemeSelectorService.SetRequestedTheme();
+            ThemeSelectorService2.SetRequestedTheme();
             await Task.CompletedTask;
         }
 

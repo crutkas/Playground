@@ -23,12 +23,30 @@
                 <TextBlock
                     x:Uid="Settings_Theme"
                     Style="{StaticResource BodyTextStyle}"/>
-                <ToggleSwitch
+                <!--<ToggleSwitch
                     x:Uid="Settings_ThemeToggle"
                     IsOn="{x:Bind IsLightThemeEnabled, Mode=OneWay}"
                     Toggled="ThemeToggle_Toggled"
                     Margin="0,4,0,0">
-                </ToggleSwitch>
+                </ToggleSwitch>-->
+                <StackPanel>
+                    <RadioButton 
+                        x:Uid="Settings_Theme_Default"
+                        x:Name="ThemeDefault"
+                        GroupName="AppTheme"
+                        Checked="RadioButton_CheckedAsync"
+                        />
+                    <RadioButton 
+                        x:Uid="Settings_Theme_Light" 
+                        x:Name="ThemeLight"
+                        GroupName="AppTheme" 
+                        Checked="RadioButton_CheckedAsync" />
+                    <RadioButton 
+                        x:Uid="Settings_Theme_Dark" 
+                        x:Name="ThemeDark"
+                        GroupName="AppTheme"
+                        Checked="RadioButton_CheckedAsync" />
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Margin="0,16,0,0">
