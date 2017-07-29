@@ -4,7 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helper="using:App43.Helpers"
     mc:Ignorable="d">
+    <Page.Resources>
+        <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
+    </Page.Resources>
 
   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Margin="{StaticResource MediumLeftRightMargin}">
@@ -35,17 +39,22 @@
                         x:Name="ThemeDefault"
                         GroupName="AppTheme"
                         Checked="RadioButton_CheckedAsync"
+                         IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}"
                         />
                     <RadioButton 
                         x:Uid="Settings_Theme_Light" 
                         x:Name="ThemeLight"
                         GroupName="AppTheme" 
-                        Checked="RadioButton_CheckedAsync" />
+                        Checked="RadioButton_CheckedAsync" 
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}"
+                        />
                     <RadioButton 
                         x:Uid="Settings_Theme_Dark" 
                         x:Name="ThemeDark"
                         GroupName="AppTheme"
-                        Checked="RadioButton_CheckedAsync" />
+                        Checked="RadioButton_CheckedAsync" 
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}"
+                        />
                 </StackPanel>
             </StackPanel>
 

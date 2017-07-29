@@ -23,6 +23,12 @@ namespace App43.Views
         //    set { Set(ref _isLightThemeEnabled, value); }
         //}
 
+        private ElementTheme _elementTheme = ElementTheme.Default;
+        public ElementTheme ElementTheme
+        {
+            get { return _elementTheme; }
+            set { Set(ref _elementTheme, value); }
+        }
         private string _appDescription;
         public string AppDescription
         {
@@ -42,7 +48,8 @@ namespace App43.Views
 
         private void Initialize()
         {
-//            IsLightThemeEnabled = ThemeSelectorService.IsLightThemeEnabled;
+            ElementTheme = ThemeSelectorService2.Theme;
+
             AppDescription = GetAppDescription();
         }
 
