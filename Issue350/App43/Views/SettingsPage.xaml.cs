@@ -29,6 +29,7 @@ namespace App43.Views
             get { return _elementTheme; }
             set { Set(ref _elementTheme, value); }
         }
+
         private string _appDescription;
         public string AppDescription
         {

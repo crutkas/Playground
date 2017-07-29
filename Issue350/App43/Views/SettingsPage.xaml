@@ -39,22 +39,19 @@
                         x:Name="ThemeDefault"
                         GroupName="AppTheme"
                         Checked="RadioButton_CheckedAsync"
-                         IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}"
-                        />
+                         IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}" />
                     <RadioButton 
                         x:Uid="Settings_Theme_Light" 
                         x:Name="ThemeLight"
                         GroupName="AppTheme" 
                         Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}"
-                        />
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}" />
                     <RadioButton 
                         x:Uid="Settings_Theme_Dark" 
                         x:Name="ThemeDark"
                         GroupName="AppTheme"
                         Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}"
-                        />
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
 
