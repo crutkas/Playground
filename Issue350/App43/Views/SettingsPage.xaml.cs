@@ -7,7 +7,6 @@ using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml;
-using System.Threading.Tasks;
 
 namespace App43.Views
 {
@@ -15,14 +14,7 @@ namespace App43.Views
     {
         // TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/pages/settings.md
         // TODO WTS: Setup your privacy web in your Resource File, currently set to https://YourPrivacyUrlGoesHere
-
-        //private bool _isLightThemeEnabled;
-        //public bool IsLightThemeEnabled
-        //{
-        //    get { return _isLightThemeEnabled; }
-        //    set { Set(ref _isLightThemeEnabled, value); }
-        //}
-
+        
         private ElementTheme _elementTheme = ElementTheme.Default;
         public ElementTheme ElementTheme
         {
@@ -73,6 +65,7 @@ namespace App43.Views
             }
 
             storage = value;
+
             OnPropertyChanged(propertyName);
         }
 
@@ -80,15 +73,12 @@ namespace App43.Views
 
         private async void RadioButton_CheckedAsync(object sender, RoutedEventArgs e)
         {
-            ElementTheme theme = ElementTheme.Default;
-            RadioButton cntl = (RadioButton)sender;
+            var param = (sender as RadioButton)?.CommandParameter;
 
-            if (cntl != null && cntl.CommandParameter != null)
+            if (param != null)
             {
-                theme = (ElementTheme)cntl.CommandParameter;
+                await ThemeSelectorService2.SetThemeAsync((ElementTheme)param);
             }
-
-            await ThemeSelectorService2.SetThemeAsync(theme);
         }
     }
 }
