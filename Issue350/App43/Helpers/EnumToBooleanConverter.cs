@@ -18,6 +18,7 @@ namespace App43.Helpers
                 }
 
                 var enumValue = Enum.Parse(EnumType, enumString);
+
                 return enumValue.Equals(value);
             }
 

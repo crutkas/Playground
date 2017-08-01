@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helper="using:App43.Helpers"
+    xmlns:xaml="using:Windows.UI.Xaml"
     mc:Ignorable="d">
     <Page.Resources>
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
@@ -36,22 +37,31 @@
                 <StackPanel>
                     <RadioButton 
                         x:Uid="Settings_Theme_Default"
-                        x:Name="ThemeDefault"
                         GroupName="AppTheme"
                         Checked="RadioButton_CheckedAsync"
-                         IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}" />
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}">
+                    <RadioButton.CommandParameter>
+                        <xaml:ElementTheme>Default</xaml:ElementTheme>
+                    </RadioButton.CommandParameter>
+                    </RadioButton>
                     <RadioButton 
                         x:Uid="Settings_Theme_Light" 
-                        x:Name="ThemeLight"
                         GroupName="AppTheme" 
                         Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}" />
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}">
+                        <RadioButton.CommandParameter>
+                            <xaml:ElementTheme>Light</xaml:ElementTheme>
+                        </RadioButton.CommandParameter> 
+                    </RadioButton>
                     <RadioButton 
                         x:Uid="Settings_Theme_Dark" 
-                        x:Name="ThemeDark"
                         GroupName="AppTheme"
                         Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}" />
+                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}">
+                        <RadioButton.CommandParameter>
+                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
                 </StackPanel>
             </StackPanel>
 

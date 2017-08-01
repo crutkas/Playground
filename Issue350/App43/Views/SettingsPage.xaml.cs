@@ -81,11 +81,12 @@ namespace App43.Views
         private async void RadioButton_CheckedAsync(object sender, RoutedEventArgs e)
         {
             ElementTheme theme = ElementTheme.Default;
+            RadioButton cntl = (RadioButton)sender;
 
-            if (sender == ThemeLight)
-                theme = ElementTheme.Light;
-            else if(sender == ThemeDark)
-                theme = ElementTheme.Dark;
+            if (cntl != null && cntl.CommandParameter != null)
+            {
+                theme = (ElementTheme)cntl.CommandParameter;
+            }
 
             await ThemeSelectorService2.SetThemeAsync(theme);
         }
