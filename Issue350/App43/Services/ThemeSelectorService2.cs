@@ -16,7 +16,7 @@ namespace App43.Services
         public static event EventHandler<ElementTheme> OnThemeChanged = delegate { };
 
         public static ElementTheme Theme { get; set; } = ElementTheme.Default;
-        internal static ElementTheme BaseTheme { get; } = (Application.Current.RequestedTheme == ApplicationTheme.Dark) ? ElementTheme.Dark : ElementTheme.Light;
+        private static ElementTheme BaseTheme { get; } = (Application.Current.RequestedTheme == ApplicationTheme.Dark) ? ElementTheme.Dark : ElementTheme.Light;
         private static readonly SolidColorBrush baseBrush = Application.Current.Resources["SystemControlForegroundBaseHighBrush"] as SolidColorBrush;
         private static readonly SolidColorBrush altBrush = Application.Current.Resources["SystemControlForegroundAltHighBrush"] as SolidColorBrush;
 

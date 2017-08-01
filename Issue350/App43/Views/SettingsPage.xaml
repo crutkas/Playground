@@ -16,7 +16,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock
                 Grid.Row="0"
@@ -24,63 +23,63 @@
                 x:Name="TitlePage"
                 Style="{StaticResource PageTitleStyle}" />
 
-            <StackPanel Grid.Row="1" Margin="0,16,0,0">
+            <StackPanel Grid.Row="1">
                 <TextBlock
-                    x:Uid="Settings_Theme"
-                    Style="{StaticResource BodyTextStyle}"/>
-                <!--<ToggleSwitch
-                    x:Uid="Settings_ThemeToggle"
-                    IsOn="{x:Bind IsLightThemeEnabled, Mode=OneWay}"
-                    Toggled="ThemeToggle_Toggled"
-                    Margin="0,4,0,0">
-                </ToggleSwitch>-->
-                <StackPanel>
-                    <RadioButton 
-                        x:Uid="Settings_Theme_Default"
-                        GroupName="AppTheme"
-                        Checked="RadioButton_CheckedAsync"
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}">
-                    <RadioButton.CommandParameter>
-                        <xaml:ElementTheme>Default</xaml:ElementTheme>
-                    </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton 
-                        x:Uid="Settings_Theme_Light" 
-                        GroupName="AppTheme" 
-                        Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}">
+                    Style="{StaticResource SubtitleTextBlockStyle}">
+                    Personalization
+                </TextBlock>
+                <StackPanel Margin="0, 20, 0, 48">
+                    <TextBlock
+                        x:Uid="Settings_Theme"
+                        Style="{StaticResource BodyTextStyle}" />
+
+                    <StackPanel Margin="0, 8, 0, 0">
+                        <RadioButton 
+                            x:Uid="Settings_Theme_Default"
+                            GroupName="AppTheme"
+                            Checked="RadioButton_CheckedAsync"
+                            IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=TwoWay}">
                         <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Light</xaml:ElementTheme>
-                        </RadioButton.CommandParameter> 
-                    </RadioButton>
-                    <RadioButton 
-                        x:Uid="Settings_Theme_Dark" 
-                        GroupName="AppTheme"
-                        Checked="RadioButton_CheckedAsync" 
-                        IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                            <xaml:ElementTheme>Default</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
-                    </RadioButton>
+                        </RadioButton>
+                        <RadioButton 
+                            x:Uid="Settings_Theme_Light" 
+                            GroupName="AppTheme" 
+                            Checked="RadioButton_CheckedAsync" 
+                            IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=TwoWay}">
+                            <RadioButton.CommandParameter>
+                                <xaml:ElementTheme>Light</xaml:ElementTheme>
+                            </RadioButton.CommandParameter> 
+                        </RadioButton>
+                        <RadioButton 
+                            x:Uid="Settings_Theme_Dark" 
+                            GroupName="AppTheme"
+                            Checked="RadioButton_CheckedAsync" 
+                            IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=TwoWay}">
+                            <RadioButton.CommandParameter>
+                                <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                            </RadioButton.CommandParameter>
+                        </RadioButton>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock
+                        x:Uid="Settings_About"
+                        Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <StackPanel Margin="0, 8, 0, 0">
+                    <TextBlock
+                        Text="{x:Bind AppDescription, Mode=OneWay}"
+                        Style="{StaticResource BodyTextStyle}" />
+                    <TextBlock
+                        x:Uid="Settings_AboutDescription"
+                        Style="{StaticResource BodyTextStyle}"
+                        Margin="0, 6, 0, 0" />
+                    <HyperlinkButton
+                        x:Uid="Settings_PrivacyTermsLink"
+                        Margin="0, 8, 0, 0"/>
                 </StackPanel>
             </StackPanel>
-
-            <StackPanel Grid.Row="2" Margin="0,16,0,0">
-                <TextBlock
-                    x:Uid="Settings_About"
-                    Style="{StaticResource BodyTextStyle}"/>
-                <TextBlock
-                    Text="{x:Bind AppDescription, Mode=OneWay}"
-                    Style="{StaticResource BodyTextStyle}"
-                    Margin="0,4,0,0"/>
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Style="{StaticResource BodyTextStyle}"/>
-                <HyperlinkButton
-                    x:Uid="Settings_PrivacyTermsLink"
-                    Margin="0,8,0,0"/>
-            </StackPanel>
-
         </Grid>
         <!--  Adaptive triggers  -->
         <VisualStateManager.VisualStateGroups>

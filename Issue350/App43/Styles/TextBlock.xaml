@@ -18,9 +18,7 @@
         <Setter Property="Margin" Value="{StaticResource PageTitleMargin}"/>
     </Style>
 
-    <Style x:Key="BodyTextStyle" TargetType="TextBlock">
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+    <Style x:Key="BodyTextStyle" TargetType="TextBlock" >
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
